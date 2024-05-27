@@ -174,7 +174,8 @@ const iMieiDati = reactive({
                     },
                 ],
         },
-    ]
+    ],
+    title: 'Yu-Gi-Oh-Api'
 });
 
 export default iMieiDati;
