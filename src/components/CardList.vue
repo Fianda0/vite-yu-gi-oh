@@ -25,7 +25,7 @@ export default {
 
   <main>
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-center">
         <SingleCard v-for="element in store.dati" :elemento="element" />
         <!-- <div v-for="element in store.dati">{{ element.card_images[0].image_url }}</div> -->
       </div>
