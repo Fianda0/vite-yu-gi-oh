@@ -19,9 +19,7 @@ export default {
 <template>
   <!-- {{ store.dati[0].card_images[0].image_url }} -->
 
-  <header>
-    <h1>{{ store.title }}</h1>
-  </header>
+
 
   <main>
     <div class="container">
@@ -34,10 +32,4 @@ export default {
 
 </template>
 
-<style scoped>
-header {
-  background-color: white;
-  padding: 1rem;
-  color: black;
-}
-</style>
+<style scoped></style>
