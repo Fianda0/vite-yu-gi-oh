@@ -2,7 +2,7 @@
 export default {
     name: 'SingleCard',
     props: {
-        elemento: Array
+        elemento: Object
     },
 }
 </script>
