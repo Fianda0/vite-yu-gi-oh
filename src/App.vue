@@ -10,7 +10,15 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      valore: '',
+    }
+  },
+  methods: {
+    getArchetype() {
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0&archetype=' + this.valore).then(risultato => {
+        this.store.cards = risultato.data.data
+      })
     }
   },
   created() {
@@ -26,15 +34,22 @@ export default {
 </script>
 
 <template>
-  <!-- <div v-for="element in this.store.archetype">{{ element.archetype_name }}</div> -->
 
   <header>
     <h1>{{ store.title }}</h1>
   </header>
 
-  <select name="" id="">
-    <option v-for="element in this.store.archetype" value="">{{ element.archetype_name }}</option>
-  </select>
+  <section id="selezione">
+
+    <select v-model="valore">
+
+      <option disabled>Scegli un archetype</option>
+      <option v-for="element in this.store.archetype">{{ element.archetype_name }}</option>
+
+    </select>
+
+    <button @click="getArchetype">Cerca per Archetype</button>
+  </section>
 
   <CardList />
 
@@ -45,5 +60,11 @@ header {
   background-color: white;
   padding: 1rem;
   color: black;
+  margin-bottom: 2rem
+}
+
+#selezione {
+  text-align: center;
+  padding: 1rem;
 }
 </style>
