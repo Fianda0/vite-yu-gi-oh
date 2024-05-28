@@ -12,13 +12,26 @@ export default {
     return {
       store,
       valore: '',
+      nCard: ''
     }
   },
   methods: {
     getArchetype() {
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=0&archetype=' + this.valore).then(risultato => {
-        this.store.cards = risultato.data.data
-      })
+      if (this.nCard == '') {
+        this.nCard = 10
+
+      }
+      if (!this.valore == '') {
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=' + this.nCard + '&offset=0&archetype=' + this.valore).then(risultato => {
+          this.store.cards = risultato.data.data
+        })
+      }
+      else {
+        alert('inserire un ARCHETYPE')
+      }
+      this.nCard = ''
+
+
     }
   },
   created() {
@@ -41,9 +54,10 @@ export default {
 
   <section id="selezione">
 
-    <select v-model="valore">
+    <input v-model="nCard" type="numb" placeholder="inserire numero di card">
 
-      <option disabled>Scegli un archetype</option>
+    <select v-model="valore" class="px-3">
+
       <option v-for="element in this.store.archetype">{{ element.archetype_name }}</option>
 
     </select>
